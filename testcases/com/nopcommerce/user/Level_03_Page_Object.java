@@ -15,6 +15,12 @@ import pageObjects.RegisterPageObject;
 
 public class Level_03_Page_Object {
 
+	private WebDriver driver;
+	private String firstName, lastName, emailAdress, password;
+	private String projectPath = System.getProperty("user.dir");
+	private HomePageObject homePage;
+	private RegisterPageObject registerPage;
+
 	@BeforeClass
 	public void beforeClass() {
 		System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
@@ -24,6 +30,9 @@ public class Level_03_Page_Object {
 		lastName = "FC";
 		emailAdress = "afc" + generateFakeNumber() + "@mail.vn";
 		password = "123456";
+
+		homePage = new HomePageObject(driver);
+		registerPage = new RegisterPageObject(driver);
 
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.get("https://demo.nopcommerce.com/");
@@ -138,7 +147,7 @@ public class Level_03_Page_Object {
 		registerPage.inputToLastnameTextbox(lastName);
 		registerPage.inputToEmailTextbox(emailAdress);
 		registerPage.inputToPasswordTextbox(password);
-		registerPage.inputToConfirmPasswordTextbox(password);
+		registerPage.inputToConfirmPasswordTextbox("1234566");
 
 		System.out.println("Register Page - Step 03: Click to Register button");
 		registerPage.clickToRegisterButton();
@@ -157,9 +166,4 @@ public class Level_03_Page_Object {
 		return rand.nextInt(9999);
 	}
 
-	private WebDriver driver;
-	private String firstName, lastName, emailAdress, password;
-	private String projectPath = System.getProperty("user.dir");
-	private HomePageObject homePage;
-	private RegisterPageObject registerPage;
 }

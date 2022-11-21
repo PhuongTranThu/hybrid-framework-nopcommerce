@@ -7,6 +7,10 @@ import pageUIs.HomePageUI;
 
 public class HomePageObject extends BasePage {
 
+	public HomePageObject(WebDriver driver) {
+		this.driver = driver;
+	}
+
 	private WebDriver driver;
 
 	public void clickToRegisterLink() {

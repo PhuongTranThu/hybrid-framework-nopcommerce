@@ -6,6 +6,10 @@ import commons.BasePage;
 import pageUIs.RegisterPageUI;
 
 public class RegisterPageObject extends BasePage {
+	public RegisterPageObject(WebDriver driver) {
+		this.driver = driver;
+	}
+
 	private WebDriver driver;
 
 	public void clickToRegisterButton() {
@@ -68,8 +72,8 @@ public class RegisterPageObject extends BasePage {
 	}
 
 	public String getRegisterSuccessMessage() {
-		waitForElementVisible(driver, RegisterPageUI.FIRST_NAME_ERROR_MESSAGE);
-		return getElementText(driver, RegisterPageUI.FIRST_NAME_ERROR_MESSAGE);
+		waitForElementVisible(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
+		return getElementText(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
 	}
 
 	public void clickToLogoutLink() {
