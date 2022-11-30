@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import pageObjects.HomePageObject;
 import pageObjects.RegisterPageObject;
 
-public class Level_03_Page_Object {
+public class Level_03_Page_Object_01_Register {
 
 	private WebDriver driver;
 	private String firstName, lastName, emailAdress, password;
@@ -39,7 +39,7 @@ public class Level_03_Page_Object {
 	}
 
 	@Test
-	public void TC_01_Register_Empty_Data() {
+	public void Register_01_Empty_Data() {
 
 		System.out.println("Home Page - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
@@ -58,7 +58,7 @@ public class Level_03_Page_Object {
 	}
 
 	@Test
-	public void TC_02_Register_Invalid_Email() {
+	public void Register_02_Invalid_Email() {
 		System.out.println("Home Page - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
 		registerPage = new RegisterPageObject(driver);
@@ -78,7 +78,7 @@ public class Level_03_Page_Object {
 	}
 
 	@Test
-	public void TC_03_Register_Success() {
+	public void Register_03_Success() {
 		System.out.println("Home Page - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
 		registerPage = new RegisterPageObject(driver);
@@ -102,7 +102,7 @@ public class Level_03_Page_Object {
 	}
 
 	@Test
-	public void TC_04_Register_Existing_Email() {
+	public void Register_04_Existing_Email() {
 		System.out.println("Home Page - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
 		registerPage = new RegisterPageObject(driver);
@@ -123,7 +123,7 @@ public class Level_03_Page_Object {
 	}
 
 	@Test
-	public void TC_05_Register_Password_Less_Than_6_Char() {
+	public void Register_05_Password_Less_Than_6_Char() {
 		System.out.println("Home Page - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
 		registerPage = new RegisterPageObject(driver);
@@ -144,7 +144,7 @@ public class Level_03_Page_Object {
 	}
 
 	@Test
-	public void TC_06_Register_Invalid_Conrfirm_Password() {
+	public void Register_06_Invalid_Conrfirm_Password() {
 		System.out.println("Home Page - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
 		registerPage = new RegisterPageObject(driver);
