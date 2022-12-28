@@ -1,91 +1,92 @@
-package pageObjects;
+package pageObjects.nopCommerce.portal;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.RegisterPageUI;
+import commons.PageGeneratorManager;
+import pageUIs.nopCommerce.portal.UserRegisterPageUI;
 
-public class RegisterPageObject extends BasePage {
-	public RegisterPageObject(WebDriver driver) {
+public class UserRegisterPageObject extends BasePage {
+	public UserRegisterPageObject(WebDriver driver) {
 		this.driver = driver;
 	}
 
 	private WebDriver driver;
 
 	public void clickToRegisterButton() {
-		waitForElementClickable(driver, RegisterPageUI.REGISTER_BUTTON);
-		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
+		waitForElementClickable(driver, UserRegisterPageUI.REGISTER_BUTTON);
+		clickToElement(driver, UserRegisterPageUI.REGISTER_BUTTON);
 
 	}
 
 	public String getErrorMessageAtFirstnameTextbox() {
-		waitForElementVisible(driver, RegisterPageUI.FIRST_NAME_ERROR_MESSAGE);
-		return getElementText(driver, RegisterPageUI.FIRST_NAME_ERROR_MESSAGE);
+		waitForElementVisible(driver, UserRegisterPageUI.FIRST_NAME_ERROR_MESSAGE);
+		return getElementText(driver, UserRegisterPageUI.FIRST_NAME_ERROR_MESSAGE);
 	}
 
 	public String getErrorMessageAtLastnameTextbox() {
-		waitForElementVisible(driver, RegisterPageUI.LAST_NAME_ERROR_MESSAGE);
-		return getElementText(driver, RegisterPageUI.LAST_NAME_ERROR_MESSAGE);
+		waitForElementVisible(driver, UserRegisterPageUI.LAST_NAME_ERROR_MESSAGE);
+		return getElementText(driver, UserRegisterPageUI.LAST_NAME_ERROR_MESSAGE);
 	}
 
 	public String getErrorMessageAtEmailTextbox() {
-		waitForElementVisible(driver, RegisterPageUI.EMAIL_ERROR_MESSAGE);
-		return getElementText(driver, RegisterPageUI.EMAIL_ERROR_MESSAGE);
+		waitForElementVisible(driver, UserRegisterPageUI.EMAIL_ERROR_MESSAGE);
+		return getElementText(driver, UserRegisterPageUI.EMAIL_ERROR_MESSAGE);
 	}
 
 	public String getErrorMessageAtPasswordTextbox() {
-		waitForElementVisible(driver, RegisterPageUI.PASSWORD_ERROR_MESSAGE);
-		return getElementText(driver, RegisterPageUI.PASSWORD_ERROR_MESSAGE);
+		waitForElementVisible(driver, UserRegisterPageUI.PASSWORD_ERROR_MESSAGE);
+		return getElementText(driver, UserRegisterPageUI.PASSWORD_ERROR_MESSAGE);
 	}
 
 	public String getErrorMessageAtConfirmPasswordTextbox() {
-		waitForElementVisible(driver, RegisterPageUI.CONFIRM_PASSWORD_ERROR_MESSAGE);
-		return getElementText(driver, RegisterPageUI.CONFIRM_PASSWORD_ERROR_MESSAGE);
+		waitForElementVisible(driver, UserRegisterPageUI.CONFIRM_PASSWORD_ERROR_MESSAGE);
+		return getElementText(driver, UserRegisterPageUI.CONFIRM_PASSWORD_ERROR_MESSAGE);
 	}
 
 	public void inputToFirstnameTextbox(String firstName) {
-		waitForElementClickable(driver, RegisterPageUI.FIRST_NAME_TEXTBOX);
-		senkeyToElement(driver, RegisterPageUI.FIRST_NAME_TEXTBOX, firstName);
+		waitForElementClickable(driver, UserRegisterPageUI.FIRST_NAME_TEXTBOX);
+		senkeyToElement(driver, UserRegisterPageUI.FIRST_NAME_TEXTBOX, firstName);
 
 	}
 
 	public void inputToLastnameTextbox(String lastName) {
-		waitForElementClickable(driver, RegisterPageUI.LAST_NAME_TEXTBOX);
-		senkeyToElement(driver, RegisterPageUI.LAST_NAME_TEXTBOX, lastName);
+		waitForElementClickable(driver, UserRegisterPageUI.LAST_NAME_TEXTBOX);
+		senkeyToElement(driver, UserRegisterPageUI.LAST_NAME_TEXTBOX, lastName);
 
 	}
 
 	public void inputToEmailTextbox(String emailAddress) {
-		waitForElementClickable(driver, RegisterPageUI.EMAIL_TEXTBOX);
-		senkeyToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, emailAddress);
+		waitForElementClickable(driver, UserRegisterPageUI.EMAIL_TEXTBOX);
+		senkeyToElement(driver, UserRegisterPageUI.EMAIL_TEXTBOX, emailAddress);
 	}
 
 	public void inputToPasswordTextbox(String password) {
-		waitForElementClickable(driver, RegisterPageUI.PASSWORD_TEXTBOX);
-		senkeyToElement(driver, RegisterPageUI.PASSWORD_TEXTBOX, password);
+		waitForElementClickable(driver, UserRegisterPageUI.PASSWORD_TEXTBOX);
+		senkeyToElement(driver, UserRegisterPageUI.PASSWORD_TEXTBOX, password);
 	}
 
 	public void inputToConfirmPasswordTextbox(String confirmPassword) {
-		waitForElementClickable(driver, RegisterPageUI.CONFIRM_PASSWORD);
-		senkeyToElement(driver, RegisterPageUI.CONFIRM_PASSWORD, confirmPassword);
+		waitForElementClickable(driver, UserRegisterPageUI.CONFIRM_PASSWORD);
+		senkeyToElement(driver, UserRegisterPageUI.CONFIRM_PASSWORD, confirmPassword);
 
 	}
 
 	public String getRegisterSuccessMessage() {
-		waitForElementVisible(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
-		return getElementText(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
+		waitForElementVisible(driver, UserRegisterPageUI.REGISTER_SUCCESS_MESSAGE);
+		return getElementText(driver, UserRegisterPageUI.REGISTER_SUCCESS_MESSAGE);
 	}
 
-	public HomePageObject clickToLogoutLink() {
-		waitForElementClickable(driver, RegisterPageUI.LOGOUT_LINK);
-		clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
-		return PageGeneratorManager.getHomePage(driver);
+	public UserHomePageObject clickToLogoutLink() {
+		waitForElementClickable(driver, UserRegisterPageUI.LOGOUT_LINK);
+		clickToElement(driver, UserRegisterPageUI.LOGOUT_LINK);
+		return PageGeneratorManager.getUserHomePage(driver);
 
 	}
 
 	public String getErrorExistingEmailMessage() {
-		waitForElementVisible(driver, RegisterPageUI.EXISTING_EMAIL_ERROR_MESSAGE);
-		return getElementText(driver, RegisterPageUI.EXISTING_EMAIL_ERROR_MESSAGE);
+		waitForElementVisible(driver, UserRegisterPageUI.EXISTING_EMAIL_ERROR_MESSAGE);
+		return getElementText(driver, UserRegisterPageUI.EXISTING_EMAIL_ERROR_MESSAGE);
 	}
 
 }

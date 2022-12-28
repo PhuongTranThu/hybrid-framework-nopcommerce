@@ -1,21 +1,21 @@
-package pageObjects.nopCommerce;
+package pageObjects.nopCommerce.portal;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.nopCommerce.MyAccountPageUI;
+import pageUIs.nopCommerce.portal.UserMyAccountPageUI;
 
-public class MyAccountPageObject extends BasePage {
+public class UserMyAccountPageObject extends BasePage {
 
-	public MyAccountPageObject(WebDriver driver) {
+	public UserMyAccountPageObject(WebDriver driver) {
 		this.driver = driver;
 	}
 
 	private WebDriver driver;
 
 	public boolean isMyAccountPageDisplayed() {
-		waitForElementVisible(driver, MyAccountPageUI.MY_ACCOUNT_TEXT);
-		return isElementDisplayed(driver, MyAccountPageUI.MY_ACCOUNT_TEXT);
+		waitForElementVisible(driver, UserMyAccountPageUI.MY_ACCOUNT_TEXT);
+		return isElementDisplayed(driver, UserMyAccountPageUI.MY_ACCOUNT_TEXT);
 	}
 
 }
