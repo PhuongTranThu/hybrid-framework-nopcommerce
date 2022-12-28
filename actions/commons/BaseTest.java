@@ -1,5 +1,6 @@
 package commons;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -32,8 +33,15 @@ public class BaseTest {
 		default:
 			throw new RuntimeException("Browser is invalid");
 		}
+
+		driver.get(GlobalConstants.PORTAL_PAGE_URL);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		return driver;
+	}
+
+	public int generateFakeNumber() {
+		Random rand = new Random();
+		return rand.nextInt(9999);
 	}
 
 }
