@@ -39,6 +39,22 @@ public class BaseTest {
 		return driver;
 	}
 
+	private String getEnvironmentUrl(String serverName) {
+		String envUrl = null;
+		EnvironmentList environment = EnvironmentList.valueOf(serverName.toUpperCase());
+		if (environment == EnvironmentList.DEV) {
+			envUrl = "https://demo.nopcommerce.com";
+		} else if (environment == EnvironmentList.TESTING) {
+			envUrl = "https://demo.nopcommerce.com";
+		} else if (environment == EnvironmentList.STAGING) {
+			envUrl = "";
+		} else if (environment == EnvironmentList.PRODUCTION) {
+			envUrl = "";
+		}
+		return envUrl;
+
+	}
+
 	public int generateFakeNumber() {
 		Random rand = new Random();
 		return rand.nextInt(9999);
