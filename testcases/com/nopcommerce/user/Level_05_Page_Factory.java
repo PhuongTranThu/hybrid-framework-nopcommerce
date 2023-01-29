@@ -10,15 +10,15 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.nopCommerce.portal.UserHomePageObject;
-import pageObjects.nopCommerce.portal.UserRegisterPageObject;
+import pageFactory.nopCommerce.portal.HomePageObject;
+import pageFactory.nopCommerce.portal.RegisterPageObject;
 
-public class Level_04_Multiple_Browser extends BaseTest {
+public class Level_05_Page_Factory extends BaseTest {
 
 	private WebDriver driver;
 	private String firstName, lastName, password;
-	private UserHomePageObject homePage;
-	private UserRegisterPageObject registerPage;
+	private HomePageObject homePage;
+	private RegisterPageObject registerPage;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -26,7 +26,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		driver = getBrowserDriver(browserName);
 
 		driver.get("https://demo.nopcommerce.com/");
-		homePage = new UserHomePageObject(driver);
+		homePage = new HomePageObject(driver);
 
 		firstName = "Automation";
 		lastName = "FC";
@@ -39,7 +39,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 
 		System.out.println("Home Page - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
-		registerPage = new UserRegisterPageObject(driver);
+		registerPage = new RegisterPageObject(driver);
 
 		System.out.println("Register Page - Step 02: Click to Register button");
 		registerPage.clickToRegisterButton();
@@ -57,7 +57,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 	public void Register_02_Invalid_Email() {
 		System.out.println("Home Page - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
-		registerPage = new UserRegisterPageObject(driver);
+		registerPage = new RegisterPageObject(driver);
 
 		System.out.println("Register Page - Step 02: Input to required fields");
 		registerPage.inputToFirstnameTextbox(firstName);

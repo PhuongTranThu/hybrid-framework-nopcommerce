@@ -11,7 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class User_01_Register {
+public class Level_01_Register_DRY {
 	WebDriver driver;
 	String emailAdress;
 	String projectPath = System.getProperty("user.dir");
@@ -80,7 +80,7 @@ public class User_01_Register {
 		driver.findElement(By.cssSelector("input#Password")).sendKeys("123456");
 		driver.findElement(By.cssSelector("input#ConfirmPassword")).sendKeys("123456");
 
-		driver.findElement(By.cssSelector("button#register-button")).click();
+		driver.findElement(By.cssSelector("button#register-bu	tton")).click();
 
 		Assert.assertEquals(driver.findElement(By.cssSelector("div.message-error li")).getText(), "The specified email already exists");
 
