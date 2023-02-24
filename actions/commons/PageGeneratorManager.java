@@ -58,5 +58,4 @@ public class PageGeneratorManager {
 	public static UserCustomerInforPageObject getUserCustomerInforPageObject(WebDriver driver) {
 		return new UserCustomerInforPageObject(driver);
 	}
-
 }
