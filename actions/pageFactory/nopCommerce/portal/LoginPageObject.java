@@ -1,9 +1,9 @@
-package pageFactory;
+package pageFactory.nopCommerce.portal;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.LoginPageUI;
+import pageUIs.nopCommerce.portal.UserLoginPageUI;
 
 public class LoginPageObject extends BasePage {
 
@@ -14,29 +14,29 @@ public class LoginPageObject extends BasePage {
 	private WebDriver driver;
 
 	public void clickToLoginButton() {
-		waitForElementClickable(driver, LoginPageUI.LOGIN_BUTTON);
-		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
+		waitForElementClickable(driver, UserLoginPageUI.LOGIN_BUTTON);
+		clickToElement(driver, UserLoginPageUI.LOGIN_BUTTON);
 	}
 
 	public String getErrorMessageAtEmailTextbox() {
-		waitForElementVisible(driver, LoginPageUI.EMAIL_ERROR_MESSAGE);
-		return getElementText(driver, LoginPageUI.EMAIL_ERROR_MESSAGE);
+		waitForElementVisible(driver, UserLoginPageUI.EMAIL_ERROR_MESSAGE);
+		return getElementText(driver, UserLoginPageUI.EMAIL_ERROR_MESSAGE);
 	}
 
 	public void inputToEmailTextbox(String invalidEmail) {
-		waitForElementVisible(driver, LoginPageUI.EMAIL_TEXTBOX);
-		senkeyToElement(driver, LoginPageUI.EMAIL_TEXTBOX, invalidEmail);
+		waitForElementVisible(driver, UserLoginPageUI.EMAIL_TEXTBOX);
+		senkeyToElement(driver, UserLoginPageUI.EMAIL_TEXTBOX, invalidEmail);
 
 	}
 
 	public String getErrorMessageUnsuccessful() {
-		waitForElementVisible(driver, LoginPageUI.UNSUCCESFUL_ERROR_MESSAGE);
-		return getElementText(driver, LoginPageUI.UNSUCCESFUL_ERROR_MESSAGE);
+		waitForElementVisible(driver, UserLoginPageUI.UNSUCCESFUL_ERROR_MESSAGE);
+		return getElementText(driver, UserLoginPageUI.UNSUCCESFUL_ERROR_MESSAGE);
 	}
 
 	public void inputToPasswordTextbox(String incorrectPassword) {
-		waitForElementVisible(driver, LoginPageUI.PASSWORD_TEXTBOX);
-		senkeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, incorrectPassword);
+		waitForElementVisible(driver, UserLoginPageUI.PASSWORD_TEXTBOX);
+		senkeyToElement(driver, UserLoginPageUI.PASSWORD_TEXTBOX, incorrectPassword);
 
 	}
 }

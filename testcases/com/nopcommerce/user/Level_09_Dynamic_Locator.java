@@ -22,10 +22,10 @@ import pageObjects.nopCommerce.portal.UserRewardPointPageObject;
 
 public class Level_09_Dynamic_Locator extends BaseTest {
 
-	@Parameters("browser")
+	@Parameters({ "browser", "url" })
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+	public void beforeClass(String browserName, String appUrl) {
+		driver = getBrowserDriver(browserName, appUrl);
 
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 

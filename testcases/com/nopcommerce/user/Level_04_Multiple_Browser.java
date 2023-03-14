@@ -20,10 +20,10 @@ public class Level_04_Multiple_Browser extends BaseTest {
 	private UserHomePageObject homePage;
 	private UserRegisterPageObject registerPage;
 
-	@Parameters("browser")
+	@Parameters({ "browser", "url" })
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+	public void beforeClass(String browserName, String appUrl) {
+		driver = getBrowserDriver(browserName, appUrl);
 
 		driver.get("https://demo.nopcommerce.com/");
 		homePage = new UserHomePageObject(driver);

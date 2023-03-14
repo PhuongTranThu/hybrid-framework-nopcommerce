@@ -62,7 +62,7 @@ public class Level_15_Allure_Report extends BaseTest {
 	@Test
 	public void User_02_Login() {
 
-		//homePage = registerPage.clickToLogoutLink();
+		homePage = registerPage.clickToLogoutLink();
 
 		loginPage = homePage.clickToLoginLink();
 

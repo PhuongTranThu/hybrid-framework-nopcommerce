@@ -21,10 +21,10 @@ import pageObjects.nopCommerce.portal.UserRegisterPageObject;
 
 public class Level_08_Switch_Role extends BaseTest {
 
-	@Parameters("browser")
+	@Parameters({ "browser", "url" })
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+	public void beforeClass(String browserName, String appUrl) {
+		driver = getBrowserDriver(browserName, appUrl);
 
 		userHomePage = PageGeneratorManager.getUserHomePage(driver);
 
@@ -65,7 +65,7 @@ public class Level_08_Switch_Role extends BaseTest {
 		userCustomerInforPage = userHomePage.openMyAccountPage();
 		userHomePage = userCustomerInforPage.clickToLogoutLinkAtUserPage(driver);
 
-		userHomePage.openPageUrl(driver, GlobalConstants.ADMIN_PAGE_URL);
+		userHomePage.openPageUrl(driver, GlobalConstants.ADMIN_DEV_URL);
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		adminDashboardPage = adminLoginPage.loginAsAdmin(adminEmail, adminPassword);
 
@@ -75,7 +75,7 @@ public class Level_08_Switch_Role extends BaseTest {
 
 	@Test
 	public void TC_03_Admin_To_User() {
-		adminLoginPage.openPageUrl(driver, GlobalConstants.PORTAL_PAGE_URL);
+		adminLoginPage.openPageUrl(driver, GlobalConstants.PORTAL_DEV_URL);
 		userHomePage = PageGeneratorManager.getUserHomePage(driver);
 		userLoginPage = userHomePage.clickToLoginLink();
 		userHomePage = userLoginPage.loginAsUser(userEmailAddress, userPassword);

@@ -23,10 +23,10 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest {
 	private UserRegisterPageObject registerPage;
 	private UserLoginPageObject loginPage;
 
-	@Parameters("browser")
+	@Parameters({ "browser", "url" })
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+	public void beforeClass(String browserName, String appUrl) {
+		driver = getBrowserDriver(browserName, appUrl);
 
 		driver.get("https://demo.nopcommerce.com/");
 		homePage = PageGeneratorManager.getUserHomePage(driver);

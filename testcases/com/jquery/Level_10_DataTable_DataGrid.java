@@ -1,4 +1,4 @@
-package com.jquery.datatable;
+package com.jquery;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.jQuery.HomePageObject;
-import pageObjects.jQuery.PageGeneratorManager;
+import pageObjects.jQuery.dataTable.HomePageObject;
+import pageObjects.jQuery.dataTable.PageGeneratorManager;
 
 public class Level_10_DataTable_DataGrid extends BaseTest {
 	List<String> actualAllCountryValues;
@@ -54,16 +54,40 @@ public class Level_10_DataTable_DataGrid extends BaseTest {
 
 	}
 
-	@Test
-	public void TC_03() {
+	public void TC_03_Enter_To_Header() {
 		actualAllCountryValues = homePage.getValueEachRowAtAllPage();
 		Assert.assertEquals(actualAllCountryValues, expectedAllCountryValues);
 
 	}
 
+	@Test
+	public void TC_04_Action_To_Textbox_At_Any_Row() {
+		homePage.clickToLoadButton();
+
+		homePage.enterToTextboxByColumnNameAtRowNumber("Company", "4", "Elistech");
+		homePage.enterToTextboxByColumnNameAtRowNumber("Contact Person", "1", "Phuong");
+		homePage.selectDropdownByColumnNameAtRowNumber("Country", "3", "Japan");
+
+		homePage.checkToCheckboxByColumnNameAtRowNumber("NPO?", "1");
+		homePage.uncheckToCheckboxByColumnNameAtRowNumber("NPO?", "1");
+
+		homePage.clickToIconByRowNumber("1", "Insert Row Above");
+		homePage.sleepInSecond(2);
+
+		homePage.clickToIconByRowNumber("2", "Remove Current Row");
+		homePage.sleepInSecond(2);
+
+		homePage.clickToIconByRowNumber("4", "Move Up");
+		homePage.sleepInSecond(2);
+
+		homePage.clickToIconByRowNumber("3", "Move Down");
+		homePage.sleepInSecond(2);
+
+	}
+
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+		// driver.quit();
 	}
 
 	private WebDriver driver;

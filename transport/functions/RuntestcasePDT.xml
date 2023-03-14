@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="tests" name="Suite" thread-count="3">
+<!--	<parameter name="environment" value="staging" />-->
+	<test name="Run on FIREFOX">
+	<!-- Local-->
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="functions.UC74_Indicator" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
