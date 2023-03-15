@@ -1,12 +1,16 @@
 package com.nopcommerce.user;
 
+import java.util.Set;
+
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.nopcommerce.commons.Common_01_Register;
+import com.nopcommerce.commons.Common_01_Register_End_User;
+import com.nopcommerce.commons.Common_01_Register_Cookie;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
@@ -15,27 +19,27 @@ import pageObjects.nopCommerce.portal.UserHomePageObject;
 import pageObjects.nopCommerce.portal.UserLoginPageObject;
 import pageObjects.nopCommerce.portal.UserRegisterPageObject;
 
-public class Level_16_Share_Data extends BaseTest {
+public class Level_16_Share_Data_C extends BaseTest {
 
 	@Parameters({ "browser", "url" })
 	@BeforeClass
 	public void beforeClass(String browserName, String appUrl) {
 		driver = getBrowserDriver(browserName, appUrl);
-		emailAddress = Common_01_Register.emailAddress;
-		validPassword = Common_01_Register.password;
 
 		homePage = PageGeneratorManager.getUserHomePage(driver);
-		log.info("Login - Step 01: Navigate to login page");
+		log.info("Pre-Condition - Step 01: Navigate to login page");
 		loginPage = homePage.clickToLoginLink();
 
-		log.info("Login - Step 02: Enter to Email textbox with value is '" + emailAddress + "'");
-		loginPage.inputToEmailTextbox(emailAddress);
+		log.info("Pre-Condition - Step 02: Set Cookie and reload page");
+		loginPage.setCookies(driver, Common_01_Register_Cookie.LoggedCokies);
+		for (Cookie cookie : Common_01_Register_Cookie.LoggedCokies) {
+			System.out.println("Cookie at C Class: " + cookie);
+			
+		}
+		loginPage.refreshCurrentPage(driver);
 
-		log.info("Login - Step 03: Enter to Password textbox with value is '" + validPassword + "'");
-		loginPage.inputToPasswordTextbox(validPassword);
-
-		log.info("Login - Step 04: Click to Login button");
-		homePage = loginPage.clickToLoginButton();
+		log.info("Pre-Condition - Step 03: Verify 'My Account' link is displayed");
+		verifyTrue(homePage.isMyAccountLinkDisplayed());
 
 	}
 
@@ -61,7 +65,7 @@ public class Level_16_Share_Data extends BaseTest {
 
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+		//driver.quit();
 	}
 
 	private WebDriver driver;
