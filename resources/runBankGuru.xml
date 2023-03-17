@@ -10,12 +10,12 @@
 <!--  <listener class-name="org.uncommons.reportng.JUnitXMLReporter"> </listener>-->
 </listeners> 
 
-  <parameter name="url" value="https://demo.nopcommerce.com/"></parameter>
+  <parameter name="url" value="https://demo.guru99.com/v4/"></parameter>
    
    <test name="Run on FIREFOX">
   <parameter name="browser" value="firefox"></parameter>
     <classes>
-      <class name="com.nopcommerce.user.Level_17_Custom_Close_Driver"/>
+      <class name="com.bankguru.N1_Create_New_Customer"/>
     </classes>
   </test> <!-- Test -->
-</suite> <!-- Suite -->	
+</suite> <!-- Suite -->
