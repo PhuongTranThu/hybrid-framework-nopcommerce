@@ -25,6 +25,8 @@ import pageObjects.nopCommerce.portal.UserHomePageObject;
 import pageObjects.nopCommerce.portal.UserMyProductReviewPageObject;
 import pageObjects.nopCommerce.portal.UserRewardPointPageObject;
 import pageUIs.JQuery.uploadFile.BasePageJQueryUI;
+import pageUIs.bankGuru.BasePageUIBankGuru;
+import pageUIs.bankGuru.ManagerPageUIBankGuru;
 
 public class BasePage {
 
@@ -629,6 +631,33 @@ public class BasePage {
 		waitForElementVisible(driver, BasePageUI.LOGOUT_LINK_AT_ADMIN);
 		clickToElement(driver, BasePageUI.LOGOUT_LINK_AT_ADMIN);
 		return PageGeneratorManager.getAdminLoginPage(driver);
+	}
+	
+	//Bank Guru
+	/**
+	 * open page at home page by Name
+	 * @param driver
+	 * @param pageName
+	 */
+	public void openPagesAtHomePageBankGuruByName(WebDriver driver, String pageName) {
+		waitForElementClickable(driver, BasePageUIBankGuru.DYNAMIC_AT_HOME_PAGE, pageName);
+		clickToElement(driver, BasePageUIBankGuru.DYNAMIC_AT_HOME_PAGE, pageName);
+	}
+	
+	public void inputToTextboxBankGuruByName(WebDriver driver, String textboxName, String value) {
+		waitForElementVisible(driver, BasePageUIBankGuru.DYNAMIC_TEXTBOX_BY_NAME, textboxName);
+		senkeyToElement(driver, BasePageUIBankGuru.DYNAMIC_TEXTBOX_BY_NAME, value, textboxName);
+	}
+	
+	public void clickToRadioButtonBankGuruByValue(WebDriver driver, String radioButtonValue) {
+		waitForElementVisible(driver, BasePageUIBankGuru.DYNAMIC_RADIOBUTTON_BY_VALUE, radioButtonValue);
+		checkToDefaultCheckboxOrRadio(driver, BasePageUIBankGuru.DYNAMIC_RADIOBUTTON_BY_VALUE, radioButtonValue);
+		
+	}
+	
+	public String getTextboxValueBankGuruByText(WebDriver driver, String textbox) {
+		waitForElementVisible(driver, BasePageUIBankGuru.DYNAMIC_TEXTBOX_BY_TEXTBOX, textbox);
+		return getElementText(driver, BasePageUIBankGuru.DYNAMIC_TEXTBOX_BY_TEXTBOX, textbox);
 	}
 
 	private long longTimeout = GlobalConstants.LONG_TIMEOUT;

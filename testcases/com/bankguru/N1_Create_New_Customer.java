@@ -9,7 +9,10 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
+import pageObject.bankGuru.HomePageObject;
 import pageObject.bankGuru.LoginPageObject;
+import pageObject.bankGuru.ManagerPageObject;
+import pageObject.bankGuru.NewCustomerPage;
 import pageObject.bankGuru.PageGeneratorManager;
 
 public class N1_Create_New_Customer extends BaseTest{
@@ -19,21 +22,58 @@ public class N1_Create_New_Customer extends BaseTest{
 	public void beforeClass (String browserName, String appUrl) {
 		driver = getBrowserDriver(browserName, appUrl);
 		loginPage = PageGeneratorManager.getLoginPage(driver);
-//		
-//		int a= 2;
-//		int b= 3;
-//		
-//		assertEquals(a, b);
-		
-		
+		userId = "mngr485806 ";
+		passwordLogin = "rYbAjYm";
+		name = "AutoTest";
+		address = "Viet Nam";
+		city = "Ha Noi";
+		state = "Single";
+		pin = "123456";
+		tel = "0123456789";
+		email = "afc" + generateFakeNumber() + "@gmail.com";
+		password = "123456";
 	}
 	
 	@Test
-	public void TC_01() {
+	public void TC_01_Login() {
+		loginPage.inputToUserId(userId);
+		loginPage.inputToPassword(passwordLogin);
+		homePage = loginPage.clickToLoginButton();
+		
+		homePage.clickToCloseAlert(driver);
+		
+		assertEquals(homePage.getLoginSuccessMessage(), "Welcome To Manager's Page of Guru99 Bank");
 		
 	}
 	@Test
-	public void TC_02() {
+	public void TC_02_Create_New_Account() {
+		homePage.openPagesAtHomePageBankGuruByName(driver, "New Customer");
+		newCustomerPage = PageGeneratorManager.getNewCustomer(driver);
+		
+		newCustomerPage.inputToTextboxBankGuruByName(driver, "name", name);
+		newCustomerPage.clickToRadioButtonBankGuruByValue(driver, "f");
+
+		homePage.sleepInSecond(8);
+		
+		newCustomerPage.inputToAdressTextbox(driver, address);
+		newCustomerPage.inputToTextboxBankGuruByName(driver, "city", city);
+		newCustomerPage.inputToTextboxBankGuruByName(driver, "state", state);
+		newCustomerPage.inputToTextboxBankGuruByName(driver, "pinno", pin);
+		newCustomerPage.inputToTextboxBankGuruByName(driver, "telephoneno", tel);
+		newCustomerPage.inputToTextboxBankGuruByName(driver, "emailid", email);
+		newCustomerPage.inputToTextboxBankGuruByName(driver, "password", password);
+		
+		managerPage = newCustomerPage.clickToSubmitButton();
+		assertEquals(managerPage.getRegisterSuccess(), "Customer Registered Successfully!!!");
+		
+		assertEquals(managerPage.getTextboxValueBankGuruByText(driver, "Customer Name"), name);
+		assertEquals(managerPage.getTextboxValueBankGuruByText(driver, "Address"), address);
+		assertEquals(managerPage.getTextboxValueBankGuruByText(driver, "City"), city);
+		assertEquals(managerPage.getTextboxValueBankGuruByText(driver, "State"), state);
+		assertEquals(managerPage.getTextboxValueBankGuruByText(driver, "Pin"), pin);
+		assertEquals(managerPage.getTextboxValueBankGuruByText(driver, "Mobile No."), tel);
+		assertEquals(managerPage.getTextboxValueBankGuruByText(driver, "Email"), email);
+		
 		
 	}
 	
@@ -45,6 +85,10 @@ public class N1_Create_New_Customer extends BaseTest{
 	
 	private WebDriver driver;
 	private LoginPageObject loginPage;
+	private HomePageObject homePage;
+	private NewCustomerPage newCustomerPage;
+	private ManagerPageObject managerPage;
+	private String userId, passwordLogin, name, address, city, state, pin, tel, email, password;
 	
 	
 }
