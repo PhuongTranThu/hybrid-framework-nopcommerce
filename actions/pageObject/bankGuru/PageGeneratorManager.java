@@ -2,6 +2,8 @@ package pageObject.bankGuru;
 
 import org.openqa.selenium.WebDriver;
 
+import pageObjects.nopCommerce.portal.UserAddressPageObject;
+
 public class PageGeneratorManager {
 	
 	public static LoginPageObject getLoginPage(WebDriver driver) {
@@ -19,5 +21,11 @@ public class PageGeneratorManager {
 	public static ManagerPageObject getManagerPage(WebDriver driver) {
 		return new ManagerPageObject(driver);
 	}
+	
+	public static EditAccountPageObject getEditAccountPage(WebDriver driver) {
+		return new EditAccountPageObject(driver);
+	}
+
+
 
 }

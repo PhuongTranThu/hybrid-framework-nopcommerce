@@ -13,11 +13,6 @@ public class NewCustomerPage extends BasePage {
 	public NewCustomerPage (WebDriver driver) {
 		this.driver = driver;
 	}
-	public ManagerPageObject clickToSubmitButton() {
-		waitForElementClickable(driver, HomePageUIBankGuru.SUBMIT_BUTTON);
-		clickToElement(driver, HomePageUIBankGuru.SUBMIT_BUTTON);
-		return PageGeneratorManager.getManagerPage(driver);
-	}
 	
 	public void inputToAdressTextbox(WebDriver driver, String value) {
 		waitForElementVisible(driver, NewCustomerPageUI.ADRESS_TEXTBOX);

@@ -19,6 +19,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pageObject.bankGuru.ManagerPageObject;
+import pageObject.bankGuru.PageGeneratorManager;
 import pageObjects.nopCommerce.admin.AdminLoginPageObject;
 import pageObjects.nopCommerce.portal.UserAddressPageObject;
 import pageObjects.nopCommerce.portal.UserHomePageObject;
@@ -26,6 +28,7 @@ import pageObjects.nopCommerce.portal.UserMyProductReviewPageObject;
 import pageObjects.nopCommerce.portal.UserRewardPointPageObject;
 import pageUIs.JQuery.uploadFile.BasePageJQueryUI;
 import pageUIs.bankGuru.BasePageUIBankGuru;
+import pageUIs.bankGuru.HomePageUIBankGuru;
 import pageUIs.bankGuru.ManagerPageUIBankGuru;
 
 public class BasePage {
@@ -516,25 +519,25 @@ public class BasePage {
 	public UserAddressPageObject openAddressPage(WebDriver driver) {
 		waitForElementClickable(driver, BasePageUI.ADDRESS_LINK);
 		clickToElement(driver, BasePageUI.ADDRESS_LINK);
-		return PageGeneratorManager.getUserAddressPage(driver);
+		return commons.PageGeneratorManager.getUserAddressPage(driver);
 	}
 
 	public UserMyProductReviewPageObject openMyProductReviewPage(WebDriver driver) {
 		waitForElementVisible(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
 		clickToElement(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
-		return PageGeneratorManager.getUserMyProductReviewPage(driver);
+		return commons.PageGeneratorManager.getUserMyProductReviewPage(driver);
 	}
 
 	public UserRewardPointPageObject openRewardPointPage(WebDriver driver) {
 		waitForElementVisible(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
 		clickToElement(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
-		return PageGeneratorManager.getUserRewardPointPage(driver);
+		return commons.PageGeneratorManager.getUserRewardPointPage(driver);
 	}
 
 	public UserHomePageObject clickToLogoutLinkAtUserPage(WebDriver driver) {
 		waitForElementVisible(driver, BasePageUI.LOGOUT_LINK_AT_USER);
 		clickToElement(driver, BasePageUI.LOGOUT_LINK_AT_USER);
-		return PageGeneratorManager.getUserHomePage(driver);
+		return commons.PageGeneratorManager.getUserHomePage(driver);
 	}
 
 	// Dynamic Locator: page ít
@@ -543,11 +546,11 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.DYNAMIC_AT_MY_ACCOUNT_PAGE_AREA, pageName);
 		switch (pageName) {
 		case "Addresses":
-			return PageGeneratorManager.getUserAddressPage(driver);
+			return commons.PageGeneratorManager.getUserAddressPage(driver);
 		case "My product reviews":
-			return PageGeneratorManager.getUserMyProductReviewPage(driver);
+			return commons.PageGeneratorManager.getUserMyProductReviewPage(driver);
 		case "Reward points":
-			return PageGeneratorManager.getUserRewardPointPage(driver);
+			return commons.PageGeneratorManager.getUserRewardPointPage(driver);
 		default:
 			throw new RuntimeException("Invalid page name at My Account area.");
 		}
@@ -630,12 +633,12 @@ public class BasePage {
 	public AdminLoginPageObject clickToLogoutLinkAtAdminPage(WebDriver driver) {
 		waitForElementVisible(driver, BasePageUI.LOGOUT_LINK_AT_ADMIN);
 		clickToElement(driver, BasePageUI.LOGOUT_LINK_AT_ADMIN);
-		return PageGeneratorManager.getAdminLoginPage(driver);
+		return commons.PageGeneratorManager.getAdminLoginPage(driver);
 	}
 	
 	//Bank Guru
 	/**
-	 * open page at home page by Name
+	 * open page bank guru at home page by Name
 	 * @param driver
 	 * @param pageName
 	 */
@@ -644,21 +647,62 @@ public class BasePage {
 		clickToElement(driver, BasePageUIBankGuru.DYNAMIC_AT_HOME_PAGE, pageName);
 	}
 	
+	/**
+	 * input to textbox bank guru by Name
+	 * @param driver
+	 * @param textboxName
+	 * @param value
+	 */
 	public void inputToTextboxBankGuruByName(WebDriver driver, String textboxName, String value) {
 		waitForElementVisible(driver, BasePageUIBankGuru.DYNAMIC_TEXTBOX_BY_NAME, textboxName);
 		senkeyToElement(driver, BasePageUIBankGuru.DYNAMIC_TEXTBOX_BY_NAME, value, textboxName);
 	}
 	
+	/**
+	 * click to radio button bank guru by Value
+	 * @param driver
+	 * @param radioButtonValue
+	 */
 	public void clickToRadioButtonBankGuruByValue(WebDriver driver, String radioButtonValue) {
 		waitForElementVisible(driver, BasePageUIBankGuru.DYNAMIC_RADIOBUTTON_BY_VALUE, radioButtonValue);
 		checkToDefaultCheckboxOrRadio(driver, BasePageUIBankGuru.DYNAMIC_RADIOBUTTON_BY_VALUE, radioButtonValue);
 		
 	}
 	
+	/**
+	 * get textbox value bank guru by Text
+	 * @param driver
+	 * @param textbox
+	 * @return
+	 */
 	public String getTextboxValueBankGuruByText(WebDriver driver, String textbox) {
 		waitForElementVisible(driver, BasePageUIBankGuru.DYNAMIC_TEXTBOX_BY_TEXTBOX, textbox);
 		return getElementText(driver, BasePageUIBankGuru.DYNAMIC_TEXTBOX_BY_TEXTBOX, textbox);
 	}
+	
+	/**
+	 * click to button bank guru by Value
+	 * @param driver
+	 * @return
+	 */
+	public ManagerPageObject clickToButtonBankGuruByValue(WebDriver driver, String valueButton) {
+		waitForElementClickable(driver, BasePageUIBankGuru.DYNAMIC_SUBMIT_BUTTON_BY_VALUE, valueButton);
+		clickToElement(driver, BasePageUIBankGuru.DYNAMIC_SUBMIT_BUTTON_BY_VALUE, valueButton);
+		return PageGeneratorManager.getManagerPage(driver);
+	}
+	
+	/**
+	 * edit textbox bank guru by Text
+	 * @param driver
+	 * @param textboxName
+	 * @param valueEdit
+	 */
+	public void inputToEditTextboxbankGuruByText(WebDriver driver, String textboxName, String valueEdit) {
+		waitForElementVisible(driver, BasePageUIBankGuru.DYNAMIC_TEXTBOX_BY_TEXTBOX, textboxName);
+		senkeyToElement(driver, BasePageUIBankGuru.DYNAMIC_TEXTBOX_BY_TEXTBOX, valueEdit, textboxName);
+		
+	}
+
 
 	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
 	private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;
