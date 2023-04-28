@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="NopCommerce - User">
+<suite name="WordPress - Admin">
 
 <listeners>
 <!--  <listener class-name="commons.MethodListener"> </listener>-->
@@ -10,13 +10,18 @@
 <!--  <listener class-name="org.uncommons.reportng.JUnitXMLReporter"> </listener>-->
 </listeners> 
 
-  <parameter name="url" value="https://demo.nopcommerce.com/"></parameter>
+  <parameter name="urlAdmin" value="http://phuongtest.com/wp-admin/"></parameter>
+  <parameter name="urlUser" value="https://demo.nopcommerce.com/"></parameter>
    
    <test name="Run on FIREFOX">
   <parameter name="browser" value="firefox"></parameter>
     <classes>
-      <class name="com.nopcommerce.commons.Common_01_Register_End_User"/>
-      <class name="com.nopcommerce.exercise.E2_Search"/>
+      <class name="com.nopcommerce.commons.Post_01_Create_Read_Update_Delete_Update_Search"/>
     </classes>
+    
+<!--    <packages>-->
+<!--    <package name="com.wordpress.admin" />-->
+<!--    </packages>-->
+    
   </test> <!-- Test -->
 </suite> <!-- Suite -->	
