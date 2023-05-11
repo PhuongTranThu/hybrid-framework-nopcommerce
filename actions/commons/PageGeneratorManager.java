@@ -12,6 +12,7 @@ import pageObjects.nopCommerce.portal.UserMyAccountPageObject;
 import pageObjects.nopCommerce.portal.UserMyProductReviewPageObject;
 import pageObjects.nopCommerce.portal.UserRegisterPageObject;
 import pageObjects.nopCommerce.portal.UserRewardPointPageObject;
+import pageObjects.nopCommerce.portal.UserSearchPageObject;
 
 public class PageGeneratorManager {
 
@@ -57,5 +58,9 @@ public class PageGeneratorManager {
 
 	public static UserCustomerInforPageObject getUserCustomerInforPageObject(WebDriver driver) {
 		return new UserCustomerInforPageObject(driver);
+	}
+	
+	public static UserSearchPageObject getSearchPageObject(WebDriver driver) {
+		return new UserSearchPageObject(driver);
 	}
 }

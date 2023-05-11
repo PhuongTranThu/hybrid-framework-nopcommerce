@@ -30,6 +30,7 @@ import pageUIs.JQuery.uploadFile.BasePageJQueryUI;
 import pageUIs.bankGuru.BasePageUIBankGuru;
 import pageUIs.bankGuru.HomePageUIBankGuru;
 import pageUIs.bankGuru.ManagerPageUIBankGuru;
+import pageUIs.nopCommerce.portal.UserCustomerInforPageUI;
 
 public class BasePage {
 
@@ -551,6 +552,8 @@ public class BasePage {
 			return commons.PageGeneratorManager.getUserMyProductReviewPage(driver);
 		case "Reward points":
 			return commons.PageGeneratorManager.getUserRewardPointPage(driver);
+		case "Customer info":
+			return commons.PageGeneratorManager.getUserCustomerInforPage(driver);
 		default:
 			throw new RuntimeException("Invalid page name at My Account area.");
 		}
@@ -636,6 +639,7 @@ public class BasePage {
 		return commons.PageGeneratorManager.getAdminLoginPage(driver);
 	}
 	
+	
 	//Bank Guru
 	/**
 	 * open page bank guru at home page by Name
@@ -700,6 +704,12 @@ public class BasePage {
 	public void inputToEditTextboxbankGuruByText(WebDriver driver, String textboxName, String valueEdit) {
 		waitForElementVisible(driver, BasePageUIBankGuru.DYNAMIC_TEXTBOX_BY_TEXTBOX, textboxName);
 		senkeyToElement(driver, BasePageUIBankGuru.DYNAMIC_TEXTBOX_BY_TEXTBOX, valueEdit, textboxName);
+		
+	}
+	
+	public pageObjects.wordpress.UserHomePO openEndUserSite(WebDriver driver, String endUserUrl) {
+		openPageUrl(driver, endUserUrl);
+		return pageObjects.wordpress.PageGeneratorManager.getUserHomePage(driver);
 		
 	}
 
