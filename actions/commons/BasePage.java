@@ -26,6 +26,7 @@ import pageObjects.nopCommerce.portal.UserAddressPageObject;
 import pageObjects.nopCommerce.portal.UserHomePageObject;
 import pageObjects.nopCommerce.portal.UserMyProductReviewPageObject;
 import pageObjects.nopCommerce.portal.UserRewardPointPageObject;
+import pageObjects.wordpress.AdminDashBoardPO;
 import pageUIs.JQuery.uploadFile.BasePageJQueryUI;
 import pageUIs.bankGuru.BasePageUIBankGuru;
 import pageUIs.bankGuru.HomePageUIBankGuru;
@@ -183,6 +184,11 @@ public class BasePage {
 		element.clear();
 		element.sendKeys(textValue);
 	}
+	
+	public void clearValueInElementByPressKey(WebDriver driver, String locatorType) {
+		WebElement element = getWebElement(driver, getDynamicXpath(locatorType));
+		element.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.CLEAR));
+	}
 
 	public void selectItemInDefaultDropdow(WebDriver driver, String locatorType, String textValue) {
 		Select select = new Select(getWebElement(driver, locatorType));
@@ -304,9 +310,25 @@ public class BasePage {
 	}
 
 	// Case 2 + 3
-	public boolean isElementUndisplayed(WebDriver driver, String lovator) {
+	public boolean isElementUndisplayed(WebDriver driver, String locator) {
 		overrrideImplicitTimeout(driver, shortTimeout);
-		List<WebElement> elements = getListWebElement(driver, lovator);
+		List<WebElement> elements = getListWebElement(driver, locator);
+		overrrideImplicitTimeout(driver, longTimeout);
+		
+		if (elements.size() == 0) {
+			return true;
+			// Có kích thước = 1 (Có trong DOM_
+			// Ko đc hiển thị
+		} else if (elements.size() > 0 && !elements.get(0).isDisplayed()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean isElementUndisplayed(WebDriver driver, String locatorType, String... dynamicValues) {
+		overrrideImplicitTimeout(driver, shortTimeout);
+		List<WebElement> elements = getListWebElement(driver, getDynamicXpath(locatorType, dynamicValues));
 		overrrideImplicitTimeout(driver, longTimeout);
 
 		if (elements.size() == 0) {
@@ -711,6 +733,11 @@ public class BasePage {
 		openPageUrl(driver, endUserUrl);
 		return pageObjects.wordpress.PageGeneratorManager.getUserHomePage(driver);
 		
+	}
+	
+	public AdminDashBoardPO openAdminSite(WebDriver driver, String adminUrl) {
+		openPageUrl(driver, adminUrl);
+		return pageObjects.wordpress.PageGeneratorManager.getAdminDashBoardPage(driver);
 	}
 
 

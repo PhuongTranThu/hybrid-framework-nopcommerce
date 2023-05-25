@@ -355,3 +355,33 @@
 [2023-03-19 15:51:08,603] My Account - Step 06: Verify 'Email' is correctly
 [2023-03-19 15:51:08,642] OS name = Mac OS X
 [2023-03-19 15:51:08,643] Driver instance name = firefoxdriver: firefox on mac (d092ffdc-0e44-4173-9859-14fab919495b)
+[2023-04-01 17:24:42,083] Register - Step 01: Navigate to 'Register' page
+[2023-04-01 17:24:43,505] Register - Step 02: Enter to Firstname textbox with value is 'Automation'
+[2023-04-01 17:24:43,583] Register - Step 03: Enter to Lastname textbox with value is 'FC'
+[2023-04-01 17:24:44,412] Register - Step 04: Enter to Email textbox with value is 'afc5270@mail.vn'
+[2023-04-01 17:24:44,496] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-04-01 17:24:44,581] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-04-01 17:24:44,633] Register - Step 07: Click to 'Register' button
+[2023-04-01 17:24:45,339] Register - Step 08: Verify register success message is displayed
+[2023-04-01 17:24:45,466] Login - Step 01: Navigate to login page
+[2023-04-01 17:24:45,967] Login - Step 02: Enter to Email textbox with value is 'afc5270@mail.vn'
+[2023-04-01 17:24:46,069] Login - Step 03: Enter to Password textbox with value is '123456'
+[2023-04-01 17:24:46,132] Login - Step 04: Click to Login button
+[2023-04-01 17:24:46,821] My Account - Step 01: Verify 'My Account' link is displayed
+[2023-04-01 17:24:46,896]  -------------------------- FAILED -------------------------- 
+[2023-04-01 17:24:46,896] My Account - Step 02: Navigate to 'My Account' page
+[2023-04-01 17:24:47,322] My Account - Step 03: Verify 'Customer Infor' page is displayed
+[2023-04-01 17:24:47,392]  -------------------------- PASSED -------------------------- 
+[2023-04-01 17:24:47,392] My Account - Step 04: Verify 'First Name' is correctly
+[2023-04-01 17:24:47,417] My Account - Step 05: Verify 'Last Name' is correctly
+[2023-04-01 17:24:47,441] My Account - Step 06: Verify 'Email' is correctly
+[2023-04-01 17:24:47,468] OS name = Mac OS X
+[2023-04-01 17:24:47,468] Driver instance name = firefoxdriver: firefox on mac (f1d354b5-6902-437f-81ae-9bda525bb721)
+[2023-04-04 17:26:30,654] Pre-Condition - Step 01: Navigate to login page
+[2023-04-04 17:26:31,786] Pre-Condition - Step 02: Set Cookie and reload page
+[2023-04-04 17:29:38,563] Pre-Condition - Step 01: Navigate to login page
+[2023-04-04 17:29:40,571] Pre-Condition - Step 02: Set Cookie and reload page
+[2023-04-04 17:34:43,559] Login - Step 01: Navigate to login page
+[2023-04-04 17:34:47,719] Login - Step 02: Enter to Email textbox with value is 'afc4196@mail.vn'
+[2023-04-04 17:34:47,809] Login - Step 03: Enter to Password textbox with value is '123456'
+[2023-04-04 17:34:47,907] Login - Step 04: Click to Login button

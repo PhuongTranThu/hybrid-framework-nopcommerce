@@ -43,5 +43,45 @@ public class AdminPostSearchPO extends BasePage{
 		return isElementDisplayed(driver, AdminPostSearchPageUI.TABLE_ROW_VALUE_BY_HEADER_INDEX, String.valueOf(headerIndex), cellValue);
 	}
 
+	@Step("Click to Post title link")
+	public AdminPostAddNewPO clickToPostTitleLink(String postTitle) {
+		waitForElementClickable(driver, AdminPostSearchPageUI.ROW_TITLE_DETAIL_BY_TITLE_NAME, postTitle);
+		clickToElement(driver, AdminPostSearchPageUI.ROW_TITLE_DETAIL_BY_TITLE_NAME, postTitle);
+		return PageGeneratorManager.getAdminPostAddNewPage(driver);
+	}
+
+	@Step("Select post checkbox by title with post title is {0}")
+	public void selectPostCheckboxByTitle(String editPostTitle) {
+		waitForElementVisible(driver, AdminPostSearchPageUI.CHECKBOX_BY_TITLE_NAME, editPostTitle);
+		checkToDefaultCheckboxOrRadio(driver, AdminPostSearchPageUI.CHECKBOX_BY_TITLE_NAME, editPostTitle);
+		
+	}
+
+	@Step("Select text item in action dropdown")
+	public void selectTextItemInActionDropdown(String action) {
+		waitForElementVisible(driver, AdminPostSearchPageUI.ACTION_DROPDOWN, action);
+		selectItemInDefaultDropdow(driver, AdminPostSearchPageUI.ACTION_DROPDOWN, action);
+		 
+	}
+
+	@Step("Click to apply button")
+	public void clickToApplyButton() {
+		waitForElementClickable(driver, AdminPostSearchPageUI.APPLY_BUTTON);
+		clickToElement(driver, AdminPostSearchPageUI.APPLY_BUTTON);
+		
+	}
+
+	@Step("Verify Move To Trash message is displayed")
+	public boolean isMoveToTrashMessageDisplayed(String message) {
+		waitForElementVisible(driver, AdminPostSearchPageUI.MOVE_TO_TRASH_MESSAGE, message);
+		return isElementDisplayed(driver, AdminPostSearchPageUI.MOVE_TO_TRASH_MESSAGE, message);
+	}
+
+	@Step("Verify No Post Found message is displayed")
+	public boolean isNoPostFoundMessageDisplayed(String noPostMessage) {
+		waitForElementVisible(driver, AdminPostSearchPageUI.NO_POST_FOUND_MESSAGE, noPostMessage);
+		return isElementDisplayed(driver, AdminPostSearchPageUI.NO_POST_FOUND_MESSAGE, noPostMessage);
+	}
+
 
 }

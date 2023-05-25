@@ -44,4 +44,19 @@ public class UserHomePO extends BasePage{
 		clickToElement(driver, UserHomePageUI.POST_TITLE_TEXT, postTitle);
 		return PageGeneratorManager.getUserPostDetail(driver);
 	}
+
+	@Step("Verify Post title Undisplayed")
+	public boolean isPostInforUnDiplayedWithPostTitle(String editPostTitle) {
+		return isElementUndisplayed(driver, UserHomePageUI.POST_TITLE_TEXT, editPostTitle);
+	}
+
+	public void enterToSearchTextbox() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public UserSearchPostPO clickToSearchButton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

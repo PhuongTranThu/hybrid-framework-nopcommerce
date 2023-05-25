@@ -30,9 +30,21 @@ public class AdminPostAddNewPO extends BasePage{
 		senkeyToElement(driver, AdminPostAddNewPageUI.BODY_TEXTBOX, valueBody);
 		
 	}
+	
+	@Step("Enter to Edit Post body with value is {0}")
+	public void enterToEditPostBody(String editPostBody) {
+		waitForElementClickable(driver, AdminPostAddNewPageUI.BODY_BUTTON);
+//		clickToElement(driver, AdminPostAddNewPageUI.BODY_BUTTON);
+		
+		waitForElementVisible(driver, AdminPostAddNewPageUI.BODY_TEXTBOX);
+		clearValueInElementByPressKey(driver, AdminPostAddNewPageUI.BODY_TEXTBOX);
+		sleepInSecond(5);
+		senkeyToElement(driver, AdminPostAddNewPageUI.BODY_TEXTBOX, editPostBody);
+		
+	}
 
 	@Step("Click to Publish button")
-	public void clickToPublishButton() {
+	public void clickToPublishOrEditButton() {
 		waitForElementVisible(driver, AdminPostAddNewPageUI.PUBLISH_BUTTON);
 		clickToElement(driver, AdminPostAddNewPageUI.PUBLISH_BUTTON);
 	}
@@ -45,10 +57,10 @@ public class AdminPostAddNewPO extends BasePage{
 		
 	}
 
-	@Step("Verify Post message displayed")
-	public boolean isPostMessageIsDisplayed() {
-		waitForElementVisible(driver, AdminPostAddNewPageUI.PUBLISHED_MESSAGE);
-		return isElementDisplayed(driver, AdminPostAddNewPageUI.PUBLISHED_MESSAGE);
+	@Step("Verify Post message is displayed")
+	public boolean isPostMessageIsDisplayed(String textMessage) {
+		waitForElementVisible(driver, AdminPostAddNewPageUI.PUBLISHED_MESSAGE, textMessage);
+		return isElementDisplayed(driver, AdminPostAddNewPageUI.PUBLISHED_MESSAGE, textMessage);
 		
 	}
 
@@ -58,6 +70,5 @@ public class AdminPostAddNewPO extends BasePage{
 		return PageGeneratorManager.getAdminPostSearchPage(driver);
 		
 	}
-
 
 }

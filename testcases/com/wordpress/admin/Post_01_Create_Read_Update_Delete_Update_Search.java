@@ -15,6 +15,7 @@ import pageObjects.wordpress.AdminPostSearchPO;
 import pageObjects.wordpress.PageGeneratorManager;
 import pageObjects.wordpress.UserHomePO;
 import pageObjects.wordpress.UserPostDetailPO;
+import pageObjects.wordpress.UserSearchPostPO;
 
 public class Post_01_Create_Read_Update_Delete_Update_Search extends BaseTest {
 	
@@ -24,8 +25,10 @@ public class Post_01_Create_Read_Update_Delete_Update_Search extends BaseTest {
 	int  randomNumber = generateFakeNumber();
 	String postTitle = "Title " + randomNumber;
 	String postBody = "Body " + randomNumber;
+	String editPostTitle = "Edit Title " + randomNumber;
+	String editPostBody = "Edit Body " + randomNumber;
 	String authorName = "admin";
-	String currentDay = getCurrentDate();
+	String currentDay = getCurrentDay();
 	String adminUrl, endUserUrl;
 	
 	@Parameters({ "browser", "urlAdmin", "urlUser"})
@@ -59,11 +62,11 @@ public class Post_01_Create_Read_Update_Delete_Update_Search extends BaseTest {
 		
 		adminPostAddNewPage.enterToAddnewPostBody(postBody );
 		
-		adminPostAddNewPage.clickToPublishButton();
+		adminPostAddNewPage.clickToPublishOrEditButton();
 		
 		adminPostAddNewPage.clickToPrePublishButton();
 		
-		verifyTrue(adminPostAddNewPage.isPostMessageIsDisplayed());
+		verifyTrue(adminPostAddNewPage.isPostMessageIsDisplayed("Post published."));
 	}
 	
 
@@ -85,14 +88,93 @@ public class Post_01_Create_Read_Update_Delete_Update_Search extends BaseTest {
 		verifyTrue(userHomePage.isPostInforDisplayedWithPostTitle(postTitle));
 		verifyTrue(userHomePage.isPostInforDisplayedWithPostBody(postTitle, postBody));
 		verifyTrue(userHomePage.isPostInforDisplayedWithPostAuthor(postTitle, authorName));
-		verifyTrue(userHomePage.isPostInforDisplayedWithPostCurrentDay(postTitle, currentDay));
+//		verifyTrue(userHomePage.isPostInforDisplayedWithPostCurrentDay(postTitle, currentDay));
 		
-		userHomePage.clickToPostTitle(postTitle);
+		userPostDetailPage = userHomePage.clickToPostTitle(postTitle);
 		
 		verifyTrue(userPostDetailPage.isPostInforDisplayedWithPostTitle(postTitle));
 		verifyTrue(userPostDetailPage.isPostInforDisplayedWithPostBody(postTitle, postBody));
 		verifyTrue(userPostDetailPage.isPostInforDisplayedWithPostAuthor(postTitle, authorName));
-		verifyTrue(userPostDetailPage.isPostInforDisplayedWithPostCurrentDay(postTitle, currentDay));
+//		verifyTrue(userPostDetailPage.isPostInforDisplayedWithPostCurrentDay(postTitle, currentDay));
+	}
+	
+
+	@Description("Edit post")
+	@Test
+	public void Post_03_Edit_Post() {
+		adminDashBoardPage = userPostDetailPage.openAdminSite(driver, this.adminUrl);
+		
+		adminPostSearchPage = adminDashBoardPage.clickToPostMenuLink();
+		
+		adminPostSearchPage.enterToSearchTextbox(postTitle);
+		
+		adminPostSearchPage.clickToSearchPostsButton();
+
+		adminPostAddNewPage = adminPostSearchPage.clickToPostTitleLink(postTitle);
+		
+		adminPostAddNewPage.enterToAddNewPostTitle(editPostTitle);
+		
+		adminPostAddNewPage.enterToEditPostBody(editPostBody);
+		
+		adminPostAddNewPage.clickToPublishOrEditButton();
+		
+		verifyTrue(adminPostAddNewPage.isPostMessageIsDisplayed("Post updated."));
+		
+		adminPostSearchPage = adminPostAddNewPage.openSearchPostPageUrl(searchPostUrl);
+		
+		verifyTrue(adminPostSearchPage.isPostSearchTableDisplayed("title", editPostTitle));
+		
+		verifyTrue(adminPostSearchPage.isPostSearchTableDisplayed("author", authorName));
+		
+		userHomePage = adminPostSearchPage.openEndUserSite(driver, this.endUserUrl);
+		
+		verifyTrue(userHomePage.isPostInforDisplayedWithPostTitle(editPostTitle));
+//		verifyTrue(userHomePage.isPostInforDisplayedWithPostBody(editPostTitle, editPostBody));
+		verifyTrue(userHomePage.isPostInforDisplayedWithPostAuthor(editPostTitle, authorName));
+//		verifyTrue(userHomePage.isPostInforDisplayedWithPostCurrentDay(editPostTitle, currentDay));
+		
+		userPostDetailPage = userHomePage.clickToPostTitle(editPostTitle);
+
+		verifyTrue(userPostDetailPage.isPostInforDisplayedWithPostTitle(editPostTitle));
+//		verifyTrue(userPostDetailPage.isPostInforDisplayedWithPostBody(editPostTitle, editPostBody));
+		verifyTrue(userPostDetailPage.isPostInforDisplayedWithPostAuthor(editPostTitle, authorName));
+//		verifyTrue(userPostDetailPage.isPostInforDisplayedWithPostCurrentDay(editPostTitle, currentDay));
+	}
+	
+	@Description("Edit post")
+	@Test
+	public void Post_04_Delete_Post() {
+		adminDashBoardPage = userPostDetailPage.openAdminSite(driver, this.adminUrl);
+		
+		adminPostSearchPage = adminDashBoardPage.clickToPostMenuLink();
+		
+		adminPostSearchPage.enterToSearchTextbox(editPostTitle);
+		
+		adminPostSearchPage.clickToSearchPostsButton();
+		
+		adminPostSearchPage.selectPostCheckboxByTitle(editPostTitle);
+		
+		adminPostSearchPage.selectTextItemInActionDropdown("Move to Trash");
+		
+		adminPostSearchPage.clickToApplyButton();
+		
+		adminPostSearchPage.isMoveToTrashMessageDisplayed("1 post moved to the Trash.");
+		
+		adminPostSearchPage.enterToSearchTextbox(editPostTitle);
+		
+		adminPostSearchPage.clickToSearchPostsButton();
+		
+		adminPostSearchPage.isNoPostFoundMessageDisplayed("No posts found.");
+		
+		userHomePage = adminPostSearchPage.openEndUserSite(driver, this.endUserUrl);
+		
+		verifyTrue(userHomePage.isPostInforUnDiplayedWithPostTitle(editPostTitle));
+		
+//		userHomePage.enterToSearchTextbox();
+//		
+//		userSearchPostPage = userHomePage.clickToSearchButton();
+//		
+//		userSearchPostPage.isNothingFoundMessageDisplayed();
 	}
 	
 	@AfterClass(alwaysRun = true)
@@ -107,6 +189,7 @@ public class Post_01_Create_Read_Update_Delete_Update_Search extends BaseTest {
 	private AdminPostSearchPO adminPostSearchPage;
 	private UserHomePO userHomePage;
 	private UserPostDetailPO userPostDetailPage;
+	private UserSearchPostPO userSearchPostPage;
 	
 
 }

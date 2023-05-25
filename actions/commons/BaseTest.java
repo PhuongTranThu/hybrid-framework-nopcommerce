@@ -219,4 +219,5 @@ public class BaseTest {
 	protected String getCurrentDay() {
 		return getCurrentDate() + "/" + getCurrentMonth() + "/" + getCurrentYear();
 	}
+	
 }

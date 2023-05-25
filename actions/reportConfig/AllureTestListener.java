@@ -25,18 +25,11 @@ public class AllureTestListener implements ITestListener {
 		return (byte[]) ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 	}
 
-	// Text attachments for Allure
-	@Attachment(value = "Text attachment of {0}", type = "text/plain")
-	public static String saveTextLog(String message) {
-		return message;
-	}
-
 	@Override
 	public void onTestFailure(ITestResult iTestResult) {
 		Object testClass = iTestResult.getInstance();
 		WebDriver driver = ((BaseTest) testClass).getDriverInstance();
 		saveScreenshotPNG(iTestResult.getName(), driver);
-		saveTextLog(getTestMethodName(iTestResult) + " failed and screenshot taken!");
 	}
 
 	@Override
@@ -70,20 +63,5 @@ public class AllureTestListener implements ITestListener {
 		// TODO Auto-generated method stub
 	}
 
-	public void deleteAllureReport() {
-		try {
-			String pathFolderDownload = GlobalConstants.PROJECT_PATH + "/allure-results";
-			File file = new File(pathFolderDownload);
-			File[] listOfFiles = file.listFiles();
-			for (int i = 0; i < listOfFiles.length; i++) {
-				if (listOfFiles[i].isFile()) {
-					System.out.println(listOfFiles[i].getName());
-					new File(listOfFiles[i].toString()).delete();
-				}
-			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}
 
 }
