@@ -10,13 +10,13 @@ public class Topic_06_Getter_Setter {
 	public int personAge;
 	public int personPhone;
 
-	public void setPersonName(String personName) {
-		if (personName == null || personName.isEmpty() || personName.isBlank()) {
-			throw new IllegalArgumentException("Name is invalid");
-		} else {
-			this.personName = personName;
-		}
-	}
+//	public void setPersonName(String personName) {
+//		if (personName == null || personName.isEmpty() || personName.isBlank()) {
+//			throw new IllegalArgumentException("Name is invalid");
+//		} else {
+//			this.personName = personName;
+//		}
+//	}
 
 	public String getPersonName() {
 		return this.personName;

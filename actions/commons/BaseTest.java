@@ -2,6 +2,8 @@ package commons;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -10,6 +12,11 @@ import org.apache.commons.logging.LogFactory;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
@@ -34,11 +41,31 @@ public class BaseTest {
 
 		switch (browser) {
 		case FIREFOX:
-			driver = WebDriverManager.firefoxdriver().create();
+			WebDriverManager.firefoxdriver().setup();
+			FirefoxOptions options = new FirefoxOptions();
+			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
+			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, GlobalConstants.PROJECT_PATH + "//browserLogs//FirefoxLog.log");
+			options.addArguments("--disable-notigications");
+			driver = new FirefoxDriver(options);
+			break;
+			
+		case H_FIREFOX:
+			WebDriverManager.firefoxdriver().setup();
+			FirefoxOptions options1 = new FirefoxOptions();
+			options1.addArguments("--headless");
+			options1.addArguments("window-size=1920x1080");
+			driver = new FirefoxDriver(options1);
 			break;
 
 		case CHROME:
-			driver = WebDriverManager.chromedriver().create();
+			WebDriverManager.chromedriver().setup();
+			System.setProperty("Webdriver.chrome.args", "--disable-logging");
+			System.setProperty("webdriver.chrome.silentOutput", "true");
+			ChromeOptions options2 = new ChromeOptions();
+			options2.addArguments("--disable-notigications");
+			options2.setExperimentalOption("useAutomationExtension", false);
+			options2.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+			driver = new ChromeDriver(options2);
 			break;
 
 		case EDGE:

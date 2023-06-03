@@ -28,6 +28,9 @@ public class Common_01_Register_End_User extends BaseTest {
 		lastName = "FC";
 		emailAddress = "afc" + generateFakeNumber() + "@mail.vn";
 		password = "123456";
+		date = "10";
+		month = "June";
+		year = "1998";
 		
 		log.info("Pre-Condition - Step 01: Navigate to 'Register' page");
 		registerPage = homePage.clickToRegisterLink();
@@ -37,6 +40,11 @@ public class Common_01_Register_End_User extends BaseTest {
 
 		log.info("Pre-Condition - Step 03: Enter to Lastname textbox with value is '" + lastName + "'");
 		registerPage.inputToLastnameTextbox(lastName);
+		
+		log.info("Pre-Condition - Step 04: Enter to dateOfBirth dropdown");
+		registerPage.selectToDropdownByName(driver, "DateOfBirthDay", date);
+		registerPage.selectToDropdownByName(driver, "DateOfBirthMonth", month);
+		registerPage.selectToDropdownByName(driver, "DateOfBirthYear", year);
 
 		log.info("Pre-Condition - Step 04: Enter to Email textbox with value is '" + emailAddress + "'");
 		registerPage.inputToEmailTextbox(emailAddress);
@@ -53,12 +61,12 @@ public class Common_01_Register_End_User extends BaseTest {
 		log.info("Pre-Condition - Step 08: Verify register success message is displayed");
 		verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 
-		homePage = registerPage.clickToLogoutLink();
+//		homePage = registerPage.clickToLogoutLink();
 		driver.quit();
 	}
 
 	private WebDriver driver;
-	private String firstName, lastName;
+	private String firstName, lastName, date, month, year;
 	public static String emailAddress, password;
 	private UserHomePageObject homePage;
 	private UserRegisterPageObject registerPage;

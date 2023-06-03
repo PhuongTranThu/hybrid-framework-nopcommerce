@@ -16,16 +16,19 @@ import pageObject.bankGuru.NewCustomerPage;
 import pageObject.bankGuru.PageGeneratorManager;
 
 public class N2_Edit_Customer_Account extends BaseTest{
+	public static String customerID1; 
 
-
+	
 	@Parameters ({"browser" , "url"})
 	@BeforeClass
-	public void beforeClass (String browserName, String appUrl) {
+	public void beforeClass (String browserName, String appUrl) {		
 		driver = getBrowserDriver(browserName, appUrl);
 		loginPage = PageGeneratorManager.getLoginPage(driver);
+		
 		userIdLogin = N1_Create_New_Customer.userId;
 		passwordLogin = N1_Create_New_Customer.passwordLogin;
 		customerID = N1_Create_New_Customer.customerID;
+		
 		addressEdit = "15 Ngo quyen";
 		cityEdit = "Hai phong";
 		stateEdit = "married";
@@ -47,6 +50,7 @@ public class N2_Edit_Customer_Account extends BaseTest{
 	
 	@Test
 	public void TC_02_Edit_Customer() {
+
 		homePage.openPagesAtHomePageBankGuruByName(driver, "Edit Account");
 		editAccountPage = PageGeneratorManager.getEditAccountPage(driver);
 		

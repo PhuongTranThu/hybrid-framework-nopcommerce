@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -18,12 +19,11 @@ import pageObject.bankGuru.PageGeneratorManager;
 public class N1_Create_New_Customer extends BaseTest{
 
 	@Parameters ({"browser" , "url"})
-	@BeforeClass
+	@BeforeTest
 	public void beforeClass (String browserName, String appUrl) {
 		driver = getBrowserDriver(browserName, appUrl);
 		loginPage = PageGeneratorManager.getLoginPage(driver);
-		userId = "mngr485806 ";
-		passwordLogin = "rYbAjYm";
+	
 		name = "AutoTest";
 		address = "Viet Nam";
 		city = "Ha Noi";
@@ -39,12 +39,12 @@ public class N1_Create_New_Customer extends BaseTest{
 		loginPage.inputToUserId(userId);
 		loginPage.inputToPassword(passwordLogin);
 		homePage = loginPage.clickToLoginButton();
-		
-		homePage.clickToCloseAlert(driver);
-		
+				
 		assertEquals(homePage.getLoginSuccessMessage(), "Welcome To Manager's Page of Guru99 Bank");
 		
+		
 	}
+	
 	@Test
 	public void TC_02_Create_New_Account() {
 		homePage.openPagesAtHomePageBankGuruByName(driver, "New Customer");
@@ -63,7 +63,10 @@ public class N1_Create_New_Customer extends BaseTest{
 		newCustomerPage.inputToTextboxBankGuruByName(driver, "emailid", email);
 		newCustomerPage.inputToTextboxBankGuruByName(driver, "password", password);
 		
-		managerPage = newCustomerPage.clickToSubmitButton();
+		managerPage = newCustomerPage.clickToButtonBankGuruByValue(driver, "Submit");
+		customerID = managerPage.getCustomerId();
+		System.out.println("Customer ID = " + customerID);
+		
 		assertEquals(managerPage.getRegisterSuccess(), "Customer Registered Successfully!!!");
 		
 		assertEquals(managerPage.getTextboxValueBankGuruByText(driver, "Customer Name"), name);
@@ -88,7 +91,10 @@ public class N1_Create_New_Customer extends BaseTest{
 	private HomePageObject homePage;
 	private NewCustomerPage newCustomerPage;
 	private ManagerPageObject managerPage;
-	private String userId, passwordLogin, name, address, city, state, pin, tel, email, password;
+	public static String userId = "mngr485806";
+	public static String passwordLogin = "rYbAjYm";
+	public static String customerID;
+	private String name, address, city, state, pin, tel, email, password;
 	
 	
 }

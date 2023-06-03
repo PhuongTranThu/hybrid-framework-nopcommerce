@@ -10,12 +10,12 @@ public class Testing {
 		topic.personAge = -10;
 		topic.personPhone = 98765;
 
-		topic.setPersonName("Automation");
-		System.out.println(topic.getPersonName());
-
-		topic.setPersonName("");
-		System.out.println(topic.getPersonName());
-
+//		topic.setPersonName("Automation");
+//		System.out.println(topic.getPersonName());
+//
+//		topic.setPersonName("");
+//		System.out.println(topic.getPersonName());
+//
 	}
 
 }

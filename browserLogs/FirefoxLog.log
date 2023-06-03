@@ -1,0 +1,58 @@
+1685787918145	geckodriver	INFO	Listening on 127.0.0.1:45167
+1685787918313	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/lk/gh6mhczs4rxgcy6ppt1752br0000gn/T/rust_mozprofileuiQ3Hz"
+1685787919154	Marionette	INFO	Marionette enabled
+2023-06-03 17:25:20.632 firefox-bin[51255:3426552] Warning: Expected min height of view: (<NSButton: 0x13b9c7c00>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2023-06-03 17:25:20.632 firefox-bin[51255:3426552] Warning: Expected min height of view: (<NSButton: 0x13b9c9c00>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2023-06-03 17:25:20.633 firefox-bin[51255:3426552] Warning: Expected min height of view: (<NSButton: 0x13b9c7000>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2023-06-03 17:25:20.633 firefox-bin[51255:3426552] Warning: Expected min height of view: (<NSButton: 0x13b9c7400>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2023-06-03 17:25:20.634 firefox-bin[51255:3426552] Warning: Expected min height of view: (<NSButton: 0x13b9ccc00>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2023-06-03 17:25:20.634 firefox-bin[51255:3426552] Warning: Expected min height of view: (<NSPopoverTouchBarItemButton: 0x13b9c6800>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2023-06-03 17:25:20.634 firefox-bin[51255:3426552] Warning: Expected min height of view: (<NSPopoverTouchBarItemButton: 0x13be0d400>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/lk/gh6mhczs4rxgcy6ppt1752br0000gn/T/rust_mozprofileuiQ3Hz/search.json.mozlz4", (void 0)))
+2023-06-03 17:25:21.329 firefox-bin[51255:3426552] Warning: Expected min height of view: (<NSButton: 0x1438efc00>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2023-06-03 17:25:21.332 firefox-bin[51255:3426552] Warning: Expected min height of view: (<NSButton: 0x1438f5000>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2023-06-03 17:25:21.332 firefox-bin[51255:3426552] Warning: Expected min height of view: (<NSButton: 0x143e0a800>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2023-06-03 17:25:21.332 firefox-bin[51255:3426552] Warning: Expected min height of view: (<NSButton: 0x143e0d000>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2023-06-03 17:25:21.333 firefox-bin[51255:3426552] Warning: Expected min height of view: (<NSButton: 0x143e0c400>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2023-06-03 17:25:21.333 firefox-bin[51255:3426552] Warning: Expected min height of view: (<NSPopoverTouchBarItemButton: 0x143e08000>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2023-06-03 17:25:21.336 firefox-bin[51255:3426552] Warning: Expected min height of view: (<NSPopoverTouchBarItemButton: 0x143e11000>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 241"  data: no]
+1685787921890	Marionette	INFO	Listening on port 54810
+Read port: 54810
+1685787921997	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "http://phuongtest.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "http://phuongtest.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "http://phuongtest.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRcoensole.cipeManager is nwarn: LoginRecipesull
+: "getRecipes: falling back to a synchronous message for:" "http://phuongtest.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "http://phuongtest.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136c: ToypeError: gRecipeMannsole.warn: LoginRecipes: "getRecipes: falling back tagero a sy is nunchronll
+JavaScrious message for:" "http://phuongtest.cpt error: resource://gre/modules/LoginManagerParent.jsom, line 136m"
+: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "http://phuongtest.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:J" "http://phuongtest.com"
+avaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "http://phuongtest.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError:consol e.wargRecn:ipeMa LoginRecipenages: "ger is ntReciull
+pes: falliJavng back to aSa synccrihronous mespt sage error: resource://for:" "http://phugre/moodules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+ngtest.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronJavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeErrorous message : gRecipeManager is null
+for:" "http://phuongtest.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "http://phuongtest.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "http://pJavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManhager is null
+uongtest.com"
+console.warn: LoginRecJavaScript error: resource://gre/modules/LoginManagerParent.jsm, liipes: "getRecipes: falling back tne 1o36: T yapeError: gRecipeManager is null
+ synchronous message for:" "http://phuongtest.com"
+console.warn: LoginRecipes: "getRecipes: fJalling back toavaScript erro a synchronousr: res messaource://gge for:" "re/modhttpules/L://phuonoginManagerParegtest.nt.jsm, line 136com"
+: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchJavaSronous messacript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+ge for:" "http://phuongtest.com"
+1685787961355	Marionette	INFO	Stopped listening on port 54810
+
+###!!! [Parent][PImageBridgeParent] Error: RunMessage(msgname=PImageBridge::Msg_WillClose) Channel closing: too late to send/recv, messages will be lost
+

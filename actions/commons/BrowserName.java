@@ -2,5 +2,5 @@ package commons;
 
 public enum BrowserName {
 
-	CHROME, FIREFOX, EDGE, OPERA;
+	CHROME, H_CHROME, FIREFOX, H_FIREFOX, EDGE, OPERA;
 }

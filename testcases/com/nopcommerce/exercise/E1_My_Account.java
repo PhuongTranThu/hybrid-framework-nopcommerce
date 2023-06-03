@@ -18,7 +18,7 @@ import pageObjects.nopCommerce.portal.UserHomePageObject;
 import pageObjects.nopCommerce.portal.UserLoginPageObject;
 import pageObjects.nopCommerce.portal.UserRegisterPageObject;
 
-public class My_Account_TC1 extends BaseTest{
+public class E1_My_Account extends BaseTest{
 	
 	@Parameters({ "browser", "url" })
 	@BeforeClass

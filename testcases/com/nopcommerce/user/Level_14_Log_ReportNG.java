@@ -53,7 +53,7 @@ public class Level_14_Log_ReportNG extends BaseTest {
 		registerPage.clickToRegisterButton();
 
 		log.info("Register - Step 08: Verify register success message is displayed");
-		verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed...");
+		verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 
 		// homePage = registerPage.clickToLogoutLink();
 	}
@@ -66,7 +66,7 @@ public class Level_14_Log_ReportNG extends BaseTest {
 		log.info("Login - Step 02: Enter to Email textbox with value is '" + emailAddress + "'");
 		loginPage.inputToEmailTextbox(emailAddress);
 
-		log.info("Login - Step 03: Enter to Password textbox with value is '" + validPassword + "'");
+		log.info("Login - Step 03: Enter to PasswGiá Như Chưa Từng Quenord textbox with value is '" + validPassword + "'");
 		loginPage.inputToPasswordTextbox(validPassword);
 
 		log.info("Login - Step 04: Click to Login button");
