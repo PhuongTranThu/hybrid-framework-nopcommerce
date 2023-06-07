@@ -9,8 +9,8 @@
 
   <parameter name="url" value="https://demo.nopcommerce.com/"></parameter>
    
-   <test name="Run on FIREFOX">
-  <parameter name="browser" value="chrome"></parameter>
+   <test name="Run on SAFARI">
+  <parameter name="browser" value="SAFARI"></parameter>
     <classes>
       <class name="com.nopcommerce.user.Level_14_Log_ReportNG"/>
     </classes>

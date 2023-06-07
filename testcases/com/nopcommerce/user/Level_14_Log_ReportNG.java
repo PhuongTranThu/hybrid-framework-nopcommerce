@@ -73,13 +73,13 @@ public class Level_14_Log_ReportNG extends BaseTest {
 		homePage = loginPage.clickToLoginButton();
 
 		log.info("Login - Step 05: Verify 'My Account' link is displayed");
-		verifyFalse(homePage.isMyAccountLinkDisplayed());
+		verifyTrue(homePage.isMyAccountLinkDisplayed());
 
 		log.info("Login - Step 06: Navigate to 'My Account' page");
 		customerInforPage = homePage.openMyAccountPage();
 
 		log.info("Login - Step 07: Verify 'Customer Infor' page is displayed");
-		verifyFalse(customerInforPage.isCustomerInforPageDisplayed());
+		verifyTrue(customerInforPage.isCustomerInforPageDisplayed());
 	}
 
 	@AfterClass

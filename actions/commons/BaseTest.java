@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -43,8 +45,10 @@ public class BaseTest {
 		case FIREFOX:
 			WebDriverManager.firefoxdriver().setup();
 			FirefoxOptions options = new FirefoxOptions();
+			
 			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
 			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, GlobalConstants.PROJECT_PATH + "//browserLogs//FirefoxLog.log");
+			
 			options.addArguments("--disable-notigications");
 			driver = new FirefoxDriver(options);
 			break;
@@ -59,19 +63,31 @@ public class BaseTest {
 
 		case CHROME:
 			WebDriverManager.chromedriver().setup();
+			
 			System.setProperty("Webdriver.chrome.args", "--disable-logging");
 			System.setProperty("webdriver.chrome.silentOutput", "true");
+			
 			ChromeOptions options2 = new ChromeOptions();
+			Map<String, Object> prefs = new HashMap<String, Object>();
+			prefs.put("credentials_enable_service", false);
+			prefs.put("profile.password_manager_enabled", false);
+			options2.setExperimentalOption("prefs", prefs);
+			
 			options2.addArguments("--disable-notigications");
 			options2.setExperimentalOption("useAutomationExtension", false);
 			options2.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+			
 			driver = new ChromeDriver(options2);
 			break;
 
 		case EDGE:
 			driver = WebDriverManager.edgedriver().create();
 			break;
-
+			
+		case SAFARI:
+			driver = WebDriverManager.safaridriver().create();
+			break;
+	
 		case OPERA:
 			driver = WebDriverManager.operadriver().create();
 			break;
@@ -82,6 +98,7 @@ public class BaseTest {
 
 		driver.get(appUrl);
 		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
 		return driver;
 	}
 
