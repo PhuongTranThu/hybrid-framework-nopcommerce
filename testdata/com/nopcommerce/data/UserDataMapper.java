@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.json.UTF8DataInputJsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nopcommerce.data.UserData.Login;
 
 import commons.GlobalConstants;
 
@@ -31,6 +32,25 @@ public class UserDataMapper {
 	
 	@JsonProperty("year")
 	private String year;
+	
+	@JsonProperty("Login")
+	private Login login;
+	
+	static class Login {
+		@JsonProperty("userName")
+		static String userName;
+		
+		@JsonProperty("password")
+		static String password;
+	}
+	
+	public String getLoginUserCode() {
+		return login.userName;	
+	}
+	
+	public String getLoginPassword() {
+		return login.password;
+	}
 	
 	public static UserDataMapper getUserData() {
 		try {
