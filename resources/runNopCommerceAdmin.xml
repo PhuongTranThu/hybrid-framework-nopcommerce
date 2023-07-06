@@ -9,10 +9,10 @@
 
   <parameter name="url" value="https://demo.nopcommerce.com/"></parameter>
    
-   <test name="Run on SAFARI">
-  <parameter name="browser" value="SAFARI"></parameter>
+   <test name="Run on CHROME">
+  <parameter name="browser" value="Chrome"></parameter>
     <classes>
-      <class name="com.nopcommerce.user.Level_20_Data_Helper"/>
+      <class name="com.nopcommerce.user.Level_20_1_Manager_Data_Json"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
